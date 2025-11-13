@@ -38,4 +38,16 @@ public class SampleController {
         }
         return "Not Found";
     }
+
+    @GetMapping("/all")
+    public String getAllItem() {
+        final Map<Integer, String> items = new ConcurrentHashMap<>();
+        items.put(1, "Item_1");
+        items.put(2, "Item_2");
+        items.put(3, "Item_3");
+        items.put(4, "Item_4");
+        items.put(5, "Item_5");
+
+        return items.toString();
+    }
 }
