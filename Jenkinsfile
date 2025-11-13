@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', credentialsId: 'git' , url: 'https://github.com/monikaspawar/appstore-service.git'
+                git branch: 'master', credentialsId: 'git-new' , url: 'https://github.com/monikaspawar/appstore-service.git'
             }
         }
 
