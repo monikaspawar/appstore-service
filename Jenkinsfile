@@ -29,12 +29,13 @@ pipeline {
             }
         }
 
-        stage('Deploy to Server') {
+        stage('Deploy locally') {
             steps {
                 sh '''
-                sudo systemctl stop your-app || true
-                cp target/*.jar /opt/app/app.jar
-                sudo systemctl start your-app
+                systemctl stop your-app || true
+                mkdir -p /opt/app
+                cp target/appstore-service-0.0.1-SNAPSHOT.jar /opt/app/app.jar
+                systemctl start your-app
                 '''
             }
         }
