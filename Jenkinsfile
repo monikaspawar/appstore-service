@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', credentialsId: 'git-new' , url: 'https://github.com/monikaspawar/appstore-service.git'
+                git branch: 'master', credentialsId: 'git' , url: 'https://github.com/monikaspawar/appstore-service.git'
             }
         }
 
@@ -29,12 +29,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Server') {
+        stage('Deploy locally') {
             steps {
                 sh '''
-                sudo systemctl stop your-app || true
-                cp target/*.jar /opt/app/app.jar
-                sudo systemctl start your-app
+                mkdir -p $WORKSPACE/deploy
+                cp target/appstore-service-0.0.1-SNAPSHOT.jar $WORKSPACE/deploy/app.jar
+                echo "Application deployed to $WORKSPACE/deploy/app.jar"
                 '''
             }
         }
