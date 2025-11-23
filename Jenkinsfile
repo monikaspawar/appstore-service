@@ -1,42 +1,40 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'mvn'
+    environment {
+        GIT_TOKEN = credentials('git_token')     // GitHub token stored in Jenkins
     }
 
     stages {
-        stage('Checkout Code') {
+
+        stage('Clone Code') {
             steps {
-                git branch: 'master', credentialsId: 'git-token' , url: 'https://github.com/monikaspawar/appstore-service.git'
+                git branch: 'master', url: "https://${GIT_TOKEN}@github.com/monikaspawar/appstore-service.git"
             }
         }
 
-        stage('Build & Test') {
+        stage('Build Maven Project') {
             steps {
-                sh 'mvn clean test'
+                sh "mvn clean package -DskipTests"
             }
-            post {
-                success {
-                    junit '**/target/surefire-reports/*.xml'
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh "mvn test"
+            }
+        }
+
+        stage('Deploy to EC2 Server') {
+            steps {
+                sshagent(['ec2-key']) {     // SSH key credential stored in Jenkins
+                    sh """
+                    scp target/*.jar ubuntu@3.109.4.64:/home/ubuntu/appstore-service.jar
+                    ssh ubuntu@3.109.4.64 "bash /home/ubuntu/deploy.sh"
+                    """
                 }
-            }
-        }
-
-        stage('Build Jar') {
-            steps {
-                sh 'mvn package -DskipTests'
-            }
-        }
-
-        stage('Deploy locally') {
-            steps {
-                sh '''
-                mkdir -p $WORKSPACE/deploy
-                cp target/appstore-service-0.0.1-SNAPSHOT.jar $WORKSPACE/deploy/app.jar
-                echo "Application deployed to $WORKSPACE/deploy/app.jar"
-                '''
             }
         }
     }
 }
+
