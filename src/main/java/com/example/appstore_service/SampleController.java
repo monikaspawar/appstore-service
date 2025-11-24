@@ -50,4 +50,9 @@ public class SampleController {
 
         return items.toString();
     }
+
+    @GetMapping("/welcome")
+    public String welcomeMessage() {
+        return "Welcome to the JAVA Appstore Service!";
+    }
 }
