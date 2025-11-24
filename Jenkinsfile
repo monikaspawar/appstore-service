@@ -29,8 +29,8 @@ pipeline {
             steps {
                 sshagent(['ec2-key']) {     // SSH key credential stored in Jenkins
                     sh """
-                    scp target/*.jar ubuntu@3.109.4.64:/home/ubuntu/appstore-service.jar
-                    ssh ubuntu@3.109.4.64 "bash /home/ubuntu/deploy.sh"
+                    scp target/*.jar ubuntu@52.66.144.167:/home/ubuntu/appstore-service.jar
+                    ssh ubuntu@52.66.144.167 "bash /home/ubuntu/deploy.sh"
                     """
                 }
             }
