@@ -12,8 +12,34 @@ One of the most common and widely used Jenkins server setups is for code testing
 4. **Integrate testing frameworks** such as JUnit for running automated test cases.
 5. **Deploy applications** to servers such as AWS or platforms like Playstore and Appstore.
 
-## Key Learning Concepts
+## Screenshots
+Create EC2 instance.
+![Screenshot 6](src/main/image/Screenshot%202025-11-24%20131804.png)
+Add ports 8080 (Jenkins UI), 22 (SSH) and 8085 (application port) in security group.
+![Screenshot 7](src/main/image/Screenshot%202025-11-24%20131928.png)
+ssh -i your-key.pem ec2-user@your-server-ip
+![Screenshot 1](src/main/image/Screenshot%202025-11-24%20131518.png)
 
-- Automation testing and deployment of builds
-- Ensuring faster and more rapid release cycles
-- Minimal user intervention required
+installation-setup.sh
+
+This script automates the complete setup of a Jenkins CI server on an AWS EC2 instance. It installs all required dependencies for Continuous Integration and Deployment, including Java, Maven, Git, Jenkins, SSH client, and generates SSH keys for secure deployments to the application server.
+
+Open your pipeline job
+
+![img_1](src/main/image/img_1.png)
+
+![img](src/main/image/img.png)
+
+![img_2](src/main/image/img_2.png)
+
+🚀 Run the complete CI/CD Pipeline in Jenkins
+![Screenshot 4](src/main/image/Screenshot%202025-11-24%20131704.png)
+
+Open your app in browser:
+![Screenshot 5](src/main/image/Screenshot%202025-11-24%20131728.png)
+
+
+
+![Screenshot 3](src/main/image/Screenshot%202025-11-24%20131641.png)
+
+![Screenshot 2](src/main/image/Screenshot%202025-11-24%20131623.png)
