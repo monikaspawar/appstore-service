@@ -35,12 +35,12 @@ Open your pipeline job
 🚀 Run the complete CI/CD Pipeline in Jenkins
 ![Screenshot 4](src/main/image/Screenshot%202025-11-24%20131704.png)
 
-Open your app in browser:
-![Screenshot 5](src/main/image/Screenshot%202025-11-24%20131728.png)
-
-
 
 ![Screenshot 3](src/main/image/Screenshot%202025-11-24%20131641.png)
 
 jar file created
 ![Screenshot 2](src/main/image/Screenshot%202025-11-24%20131623.png)
+
+Open your app in browser:
+![Screenshot 5](src/main/image/Screenshot%202025-11-24%20131728.png)
+
