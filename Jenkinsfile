@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_TOKEN = credentials('git_token')     // GitHub token stored in Jenkins
+        GIT_TOKEN = credentials('git-token')     // GitHub token stored in Jenkins
     }
 
     stages {
